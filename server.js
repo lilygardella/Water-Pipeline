@@ -85,7 +85,7 @@ function detectState(client, opp, desc) {
   for (const [state, keywords] of Object.entries(STATE_MAP)) {
     if (keywords.some(k => text.includes(k))) return state;
   }
-  return 'Other';
+  return 'NLI';
 }
 
 function xlDateToStr(v) {

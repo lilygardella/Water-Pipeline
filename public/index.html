@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Water Pipeline | CGP Business Development</title>
+<title>SGM Water Pipeline | CGP Business Development</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -320,7 +320,7 @@
 
 <header>
   <div class="header-left">
-    <h1>Water Pipeline Tracker</h1>
+    <h1>SGM Water Pipeline</h1>
     <p>CGP Business Development &mdash; S&amp;I SGM Water-Led Play</p>
   </div>
   <div class="header-meta">
@@ -335,12 +335,49 @@
 </header>
 
 <div class="summary-strip">
-  <div class="summary-stat"><div class="label">Total Pipeline Value</div><div class="value" id="stat-value">—</div><div class="sub" id="stat-tbd">—</div></div>
-  <div class="summary-stat"><div class="label">Must Win</div><div class="value" id="stat-mw" style="color:#fca5a5">—</div><div class="sub">Flagged MW</div></div>
-  <div class="summary-stat"><div class="label">Top Opportunity</div><div class="value" id="stat-top" style="color:#fcd34d">—</div><div class="sub">Flagged TOP</div></div>
-  <div class="summary-stat"><div class="label">States / Regions</div><div class="value" id="stat-states">—</div><div class="sub" id="stat-states-list">—</div></div>
-  <div class="summary-stat"><div class="label">Proposals Submitted</div><div class="value" id="stat-submitted" style="color:#93c5fd">—</div><div class="sub">Active bids</div></div>
-  <div class="summary-stat"><div class="label">Largest Deal</div><div class="value" id="stat-largest" style="color:var(--gold-light)">—</div><div class="sub" id="stat-largest-sub">—</div></div>
+  <div class="summary-stat">
+    <div class="label">Total Pipeline Value</div>
+    <div class="value" id="stat-value">—</div>
+    <div class="sub" id="stat-tbd">—</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">Pwin-Weighted Value</div>
+    <div class="value" id="stat-weighted" style="color:var(--teal-light)">—</div>
+    <div class="sub">Expected close value</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">Active Bids</div>
+    <div class="value" id="stat-submitted" style="color:#93c5fd">—</div>
+    <div class="sub" id="stat-submitted-sub">Submitted / Orals / Verbal</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">Priority Deals</div>
+    <div class="value" id="stat-priority">—</div>
+    <div class="sub" id="stat-priority-sub">MW &amp; Top Opp flagged</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">Largest Deal</div>
+    <div class="value" id="stat-largest" style="color:var(--gold-light)">—</div>
+    <div class="sub" id="stat-largest-sub">—</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">Total Deals</div>
+    <div class="value" id="stat-total-deals">—</div>
+    <div class="sub" id="stat-regions">—</div>
+  </div>
+</div>
+
+<!-- PIPELINE FUNNEL -->
+<div id="funnel-bar" style="
+  padding: 1rem 3rem;
+  border-bottom: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+">
+  <span style="font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--slate);font-weight:600;margin-right:1rem;white-space:nowrap">Pipeline Stage</span>
+  <div id="funnel-stages" style="display:flex;gap:2px;flex:1;min-width:0"></div>
 </div>
 
 <nav class="tab-nav">
@@ -409,7 +446,7 @@
       <div class="form-grid">
         <div class="form-group">
           <label class="form-label">State / Region</label>
-          <input class="form-input" name="account" placeholder="e.g. CA, TX, Other">
+          <input class="form-input" name="account" placeholder="e.g. CA, TX, NLI">
         </div>
         <div class="form-group">
           <label class="form-label">Pipeline Stage</label>
@@ -530,7 +567,7 @@ const stateColors = {
   AZ:'#f97316',CA:'#3b82f6',ID:'#8b5cf6',NM:'#ec4899',OR:'#22c55e',UT:'#f59e0b',
   WA:'#06b6d4',TX:'#ef4444',VA:'#a78bfa',DC:'#fb923c',NY:'#34d399',PA:'#60a5fa',
   FL:'#f472b6',OH:'#4ade80',CO:'#fbbf24',MD:'#818cf8',GA:'#2dd4bf',IL:'#fb7185',
-  MN:'#e879f9',NV:'#a3e635',Other:'#64748b'
+  MN:'#e879f9',NV:'#a3e635',NLI:'#64748b',Other:'#64748b'
 };
 
 const STATUS_CLASS = {
@@ -585,25 +622,89 @@ function setSyncState(s) {
 
 // ── SUMMARY ──
 function updateSummary() {
-  const total = DATA.reduce((s,d) => s + d.valueNum, 0);
-  const tbdN = DATA.filter(d => !d.value || d.value==='TBD').length;
-  const mwN = DATA.filter(d => d.must_win==='MW').length;
-  const topN = DATA.filter(d => d.must_win==='TOP').length;
-  const states = [...new Set(DATA.map(d => d.account))].sort();
-  const subN = DATA.filter(d => ['Proposal Submitted','Go - Bidding','Orals','Verbal Commit'].includes(d.status)).length;
+  const total   = DATA.reduce((s,d) => s + d.valueNum, 0);
+  const tbdN    = DATA.filter(d => !d.value || d.value==='TBD').length;
+  const mwN     = DATA.filter(d => d.must_win==='MW').length;
+  const topN    = DATA.filter(d => d.must_win==='TOP').length;
+  const regions = [...new Set(DATA.map(d => d.account))].sort();
+  const activeBids = DATA.filter(d => ['Proposal Submitted','Go - Bidding','Orals','Verbal Commit'].includes(d.status));
+  const activeBidValue = activeBids.reduce((s,d) => s + d.valueNum, 0);
   const largest = DATA.reduce((m,d) => d.valueNum > m.valueNum ? d : m, {valueNum:0});
 
-  document.getElementById('stat-value').textContent = total > 0 ? '$'+(total/1e6).toFixed(1)+'M' : '$0';
-  document.getElementById('stat-tbd').textContent = `+ ${tbdN} TBD`;
-  document.getElementById('stat-mw').textContent = mwN;
-  document.getElementById('stat-top').textContent = topN;
-  document.getElementById('stat-states').textContent = states.length;
-  document.getElementById('stat-states-list').textContent = states.slice(0,6).join(', ') + (states.length>6?'…':'');
-  document.getElementById('stat-submitted').textContent = subN;
-  document.getElementById('stat-largest').textContent = largest.value || '—';
-  document.getElementById('stat-largest-sub').textContent = largest.client ? largest.client.split(' ').slice(0,3).join(' ') : '—';
-  document.getElementById('total-count').textContent = DATA.length;
-  document.getElementById('as-of-date').textContent = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  // Pwin-weighted value: sum(valueNum * pwin/100) for deals that have both
+  const weighted = DATA.reduce((s,d) => {
+    const pw = parseFloat(d.pwin);
+    return s + (d.valueNum > 0 && !isNaN(pw) && pw > 0 ? d.valueNum * pw / 100 : 0);
+  }, 0);
+
+  document.getElementById('stat-value').textContent   = total > 0 ? '$'+(total/1e6).toFixed(1)+'M' : '$0';
+  document.getElementById('stat-tbd').textContent     = `+ ${tbdN} with TBD value`;
+  document.getElementById('stat-weighted').textContent= weighted > 0 ? '$'+(weighted/1e6).toFixed(1)+'M' : '—';
+  document.getElementById('stat-submitted').textContent = activeBids.length;
+  document.getElementById('stat-submitted-sub').textContent = activeBidValue > 0
+    ? `$${(activeBidValue/1e6).toFixed(1)}M in active bids` : 'Submitted · Orals · Verbal';
+  document.getElementById('stat-priority').textContent = mwN + topN;
+  document.getElementById('stat-priority-sub').textContent = `${mwN} Must Win · ${topN} Top Opp`;
+  document.getElementById('stat-largest').textContent  = largest.value || '—';
+  document.getElementById('stat-largest-sub').textContent = largest.client
+    ? largest.client.split(' ').slice(0,3).join(' ') : '—';
+  document.getElementById('stat-total-deals').textContent = DATA.length;
+  document.getElementById('stat-regions').textContent = `${regions.filter(r=>r!=='NLI').length} regions identified`;
+  document.getElementById('total-count').textContent  = DATA.length;
+  document.getElementById('as-of-date').textContent   = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+
+  renderFunnel();
+}
+
+// ── PIPELINE FUNNEL ──
+function renderFunnel() {
+  const stages = STATUS_ORDER.slice().reverse(); // early → late
+  const counts = {};
+  stages.forEach(s => { counts[s] = DATA.filter(d => d.status===s).length; });
+  const max = Math.max(...Object.values(counts), 1);
+
+  const STAGE_COLORS = {
+    'Identified':'#6366f1','Contacted':'#8b5cf6','Qualified':'#0ea5e9',
+    'Request to Propose':'#10b981','Go - Bidding':'#f59e0b',
+    'Proposal Submitted':'#3b82f6','Orals':'#f97316','Verbal Commit':'#22c55e'
+  };
+  const SHORT = {
+    'Identified':'Identified','Contacted':'Contacted','Qualified':'Qualified',
+    'Request to Propose':'RTP','Go - Bidding':'Bidding',
+    'Proposal Submitted':'Submitted','Orals':'Orals','Verbal Commit':'Verbal'
+  };
+
+  document.getElementById('funnel-stages').innerHTML = stages.map(s => {
+    const n = counts[s];
+    const pct = Math.max(n > 0 ? 18 : 4, Math.round((n / max) * 100));
+    const col = STAGE_COLORS[s] || '#64748b';
+    return `
+      <div title="${s}: ${n} deal${n!==1?'s':''}" style="flex:1;min-width:0;cursor:pointer"
+           onclick="applyStatusFilter(${JSON.stringify(s)})">
+        <div style="
+          height:${pct}px; min-height:4px; max-height:80px;
+          background:${col}${n>0?'cc':'22'};
+          border-radius:4px 4px 0 0;
+          transition:background .2s;
+          display:flex; align-items:center; justify-content:center;
+        ">
+          ${n > 0 ? `<span style="font-size:.65rem;font-weight:700;color:#fff">${n}</span>` : ''}
+        </div>
+        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.06em;color:${n>0?col:'var(--slate)'};margin-top:.25rem;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+          ${SHORT[s]}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function applyStatusFilter(status) {
+  // Switch to card view and filter by clicking the funnel bar
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab==='cards'));
+  document.querySelectorAll('.tab-view').forEach(v => v.classList.toggle('active', v.id==='tab-cards'));
+  currentFilter = '_status:' + status;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  renderGrid();
+  showToast(`Filtered: ${status}`);
 }
 
 // ── STATE FILTERS ──
@@ -638,6 +739,7 @@ function filterData(data, f) {
   if (f==='all') return data;
   if (f==='mw')  return data.filter(d => d.must_win==='MW');
   if (f==='top') return data.filter(d => d.must_win==='TOP');
+  if (f.startsWith('_status:')) return data.filter(d => d.status===f.slice(8));
   return data.filter(d => d.account===f);
 }
 

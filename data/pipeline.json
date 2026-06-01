@@ -301,7 +301,7 @@
   },
   {
     "id": "16",
-    "account": "Other",
+    "account": "NLI",
     "client": "Hunter Industries, Inc.",
     "opportunity": "Audit",
     "description": "",
@@ -321,7 +321,7 @@
   },
   {
     "id": "17",
-    "account": "Other",
+    "account": "NLI",
     "client": "CARDS Partnership Holdings, L.P.",
     "opportunity": "TIS - CARDS & Live Oak Section 382",
     "description": "",
@@ -341,7 +341,7 @@
   },
   {
     "id": "18",
-    "account": "Other",
+    "account": "NLI",
     "client": "Frontline Road Safety Holdings, LLC",
     "opportunity": "TIS - 2026 Frontline Debt",
     "description": "",
@@ -361,7 +361,7 @@
   },
   {
     "id": "19",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "Accounting Advisory related to Essential acquisition",
     "description": "",
@@ -421,7 +421,7 @@
   },
   {
     "id": "22",
-    "account": "Other",
+    "account": "NLI",
     "client": "GOLDEN STATE WATER",
     "opportunity": "Golden State Water - Bear Valley - ITC PWA Compliance",
     "description": "",
@@ -441,7 +441,7 @@
   },
   {
     "id": "23",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "DISE Standard Implementation",
     "description": "",
@@ -481,7 +481,7 @@
   },
   {
     "id": "25",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW - Controls Transformation",
     "description": "",
@@ -501,7 +501,7 @@
   },
   {
     "id": "26",
-    "account": "Other",
+    "account": "NLI",
     "client": "The Washington Suburban Sanitary Commission",
     "opportunity": "Capital Improvements Program Management Services",
     "description": "",
@@ -521,7 +521,7 @@
   },
   {
     "id": "27",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW - Visier Implementation Services",
     "description": "",
@@ -541,7 +541,7 @@
   },
   {
     "id": "28",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW - Business Process as a Service (BPaaS)",
     "description": "",
@@ -621,7 +621,7 @@
   },
   {
     "id": "32",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "Valuation work related to Essential Utilities Merger",
     "description": "",
@@ -641,7 +641,7 @@
   },
   {
     "id": "33",
-    "account": "Other",
+    "account": "NLI",
     "client": "Fairfax County Water Authority",
     "opportunity": "Data Governance, Strategy and Implementation",
     "description": "",
@@ -661,7 +661,7 @@
   },
   {
     "id": "34",
-    "account": "Other",
+    "account": "NLI",
     "client": "City of Toledo Utilities",
     "opportunity": "Implement enterprise asset management solution",
     "description": "",
@@ -681,7 +681,7 @@
   },
   {
     "id": "35",
-    "account": "Other",
+    "account": "NLI",
     "client": "Fairfax County Water Authority",
     "opportunity": "CIS Upgrade | SAP Service Cloud V1 to V2",
     "description": "SAP Service Cloud V1 to V2 Upgrade",
@@ -701,7 +701,7 @@
   },
   {
     "id": "36",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW | AI & Data | Platform Modernization",
     "description": "AW is looking to modernizing their current platform to native AWS services to more specialized data vendors.",
@@ -721,7 +721,7 @@
   },
   {
     "id": "37",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "American Water | SAP S/4HANA MSG Technical + VIM Upgrade",
     "description": "American Water | SAP S/4HANA Technical+VIM Upgrade",
@@ -741,7 +741,7 @@
   },
   {
     "id": "38",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "American Water | PCR001 |  SAP GRC Application Upgrade",
     "description": "American Water | PCR001 |  SAP GRC Application Upgrade",
@@ -781,7 +781,7 @@
   },
   {
     "id": "40",
-    "account": "Other",
+    "account": "NLI",
     "client": "RECOLOGY",
     "opportunity": "Recology_WFM and Pay Implementation",
     "description": "Implementation of UKG WFM and Payroll at Recology",
@@ -801,7 +801,7 @@
   },
   {
     "id": "41",
-    "account": "Other",
+    "account": "NLI",
     "client": "RECOLOGY",
     "opportunity": "Recology_WFM and Pay Implementation",
     "description": "Implementation of UKG WFM and Payroll at Recology",
@@ -821,7 +821,7 @@
   },
   {
     "id": "42",
-    "account": "Other",
+    "account": "NLI",
     "client": "RECOLOGY",
     "opportunity": "Recology_WFM and Pay Implementation",
     "description": "Implementation of UKG WFM and Payroll at Recology",
@@ -841,7 +841,7 @@
   },
   {
     "id": "43",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW SharePoint Assessment and Operate Services",
     "description": "SharePoint Online Assessment and Operate Services",
@@ -901,7 +901,7 @@
   },
   {
     "id": "46",
-    "account": "Other",
+    "account": "NLI",
     "client": "Water District No1 of Johnson County Kansas",
     "opportunity": "WaterOne - SAP S/4HANA Operate",
     "description": "S/4HANA, utilities solution and Successfactors operate opportunity after RISE migration",
@@ -921,7 +921,7 @@
   },
   {
     "id": "47",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW - ServiceNow Managed Services",
     "description": "Provide managed services for the AmWater ServiceNow platform",
@@ -941,7 +941,7 @@
   },
   {
     "id": "48",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "ONESOURCE Global Next Upgrade",
     "description": "ONESOURCE Global Next upgrade for regulated business in SAP ECC.",
@@ -961,7 +961,7 @@
   },
   {
     "id": "49",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW - Workiva Implementation",
     "description": "Implementation of Workiva's management reporting module to support with client's rate case reporting. Additional uses and modules tbd.",
@@ -981,7 +981,7 @@
   },
   {
     "id": "50",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "TIS-TCRS American Water Works acq Essential TY25-26",
     "description": "Analysis of costs incurred in connection with American Water Works announced acquisition of Essential Utilities",
@@ -1001,7 +1001,7 @@
   },
   {
     "id": "51",
-    "account": "Other",
+    "account": "NLI",
     "client": "CARDS Holdings Inc",
     "opportunity": "Pr Empire & Pr Seminole: State Pull-Through Opportunities",
     "description": "Sales tax; Texas franchise tax",
@@ -1081,7 +1081,7 @@
   },
   {
     "id": "55",
-    "account": "Other",
+    "account": "NLI",
     "client": "Water District No1 of Johnson County Kansas",
     "opportunity": "WaterOne - SAP S/4HANA Operate",
     "description": "S/4HANA, utilities solution and Successfactors operate opportunity after RISE migration",
@@ -1101,7 +1101,7 @@
   },
   {
     "id": "56",
-    "account": "Other",
+    "account": "NLI",
     "client": "Frontline Road Safety Holdings, LLC",
     "opportunity": "Federal Fuel Tax Refunds",
     "description": "Deloitte Tax will assist client with filing federal fuel tax refunds",
@@ -1121,7 +1121,7 @@
   },
   {
     "id": "57",
-    "account": "Other",
+    "account": "NLI",
     "client": "TEXAS PRIDE DISPOSAL SOLUTIONS, L.L.C.",
     "opportunity": "Tax compliance and consulting",
     "description": "Joe has let me know they are set on auditors, but need to engage tax - they would like to meet to discuss.",
@@ -1161,7 +1161,7 @@
   },
   {
     "id": "59",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW Resell -  Deloitte AWS Resale - Y3",
     "description": "Resell proposal to AW for VMC and AWS for 3YRs for $32M (11.6M y1 /10.2M y2 /10.2M y3 commit). Provide AW with service credits on meeting consumption/paid.",
@@ -1181,7 +1181,7 @@
   },
   {
     "id": "60",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW Resell -  Deloitte AWS Resale - Y3",
     "description": "Resell proposal to AW for VMC and AWS for 3YRs for $32M (11.6M y1 /10.2M y2 /10.2M y3 commit). Provide AW with service credits on meeting consumption/paid.",
@@ -1201,7 +1201,7 @@
   },
   {
     "id": "61",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW - IMS - PCR5 - Cloud RACI Updates",
     "description": "PCR to update the RACI Table for Cloud Scope to align with IMS work across all platforms",
@@ -1241,7 +1241,7 @@
   },
   {
     "id": "63",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "American Water | Managed Services Extension",
     "description": "Five year extension for AMS, IMS, NMS, Cyber, and IAM services",
@@ -1261,7 +1261,7 @@
   },
   {
     "id": "64",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 - S/4 Brownfield Planning and Design Prep",
     "description": "S/4 Brownfield Migration",
@@ -1281,7 +1281,7 @@
   },
   {
     "id": "65",
-    "account": "Other",
+    "account": "NLI",
     "client": "City of Toledo Utilities",
     "opportunity": "CO#2 Add New AWS Services",
     "description": "",
@@ -1341,7 +1341,7 @@
   },
   {
     "id": "68",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "American Water | Managed Services Extension",
     "description": "Five year extension for AMS, IMS, NMS, Cyber, and IAM services",
@@ -1361,7 +1361,7 @@
   },
   {
     "id": "69",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "American Water | Managed Services Extension",
     "description": "Five year extension for AMS, IMS, NMS, Cyber, and IAM services",
@@ -1381,7 +1381,7 @@
   },
   {
     "id": "70",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "American Water | Managed Services Extension",
     "description": "Five year extension for AMS, IMS, NMS, Cyber, and IAM services",
@@ -1401,7 +1401,7 @@
   },
   {
     "id": "71",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "American Water | Managed Services Extension",
     "description": "Five year extension for AMS, IMS, NMS, Cyber, and IAM services",
@@ -1421,7 +1421,7 @@
   },
   {
     "id": "72",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 - S/4 MDMS Implementation",
     "description": "American Water is looking for SI services to implement MDMS solution replacing existing MDM solutions (Fathom and Cloud for Energy)",
@@ -1441,7 +1441,7 @@
   },
   {
     "id": "73",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "Essential acquisition pro formas - Phase 2",
     "description": "Article 11 pro formas to support a debt filing",
@@ -1461,7 +1461,7 @@
   },
   {
     "id": "74",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW DR Strategy and POC - Phase 2",
     "description": "Phase 2 Implementation in AWS Cloud.",
@@ -1481,7 +1481,7 @@
   },
   {
     "id": "75",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "DC194 - Staff Aug 2026 - Q3 Work Orders",
     "description": "Extension of flex teams for 2026 Q3",
@@ -1501,7 +1501,7 @@
   },
   {
     "id": "76",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "DC194 - Staff Aug 2026 - Q2 Work Orders",
     "description": "WO#2 - API Cloud Extension - 4/1 to 4/31 - $28,769_x000D_\nWO#3 - FICA Enhancements extension - 4/8 to 4/24 - $16,146",
@@ -1521,7 +1521,7 @@
   },
   {
     "id": "77",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW Application Packaging Support",
     "description": "Staff Aug support for application packaging.",
@@ -1541,7 +1541,7 @@
   },
   {
     "id": "78",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW | AI & Data | UiPath Development",
     "description": "UiPath opportunity",
@@ -1561,7 +1561,7 @@
   },
   {
     "id": "79",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW | AI & Data | Alteryx migration",
     "description": "Alteryx migration to new modern data platform",
@@ -1581,7 +1581,7 @@
   },
   {
     "id": "80",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW TCOE - Global Automation Service - 2026",
     "description": "Provide test automation and tool management services to client.",
@@ -1601,7 +1601,7 @@
   },
   {
     "id": "81",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW Resell - AWS Resell Additional Consumption - Y2",
     "description": "AWS consumption and marketplace spend (up to 25%) over the $10.2M Y2 commit. AW total Y2 spend $xxM. This opportunity captures the additional consumption of $xM.",
@@ -1621,7 +1621,7 @@
   },
   {
     "id": "82",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW Resell - AWS Resell Additional Consumption - Y2",
     "description": "AWS consumption and marketplace spend (up to 25%) over the $10.2M Y2 commit. AW total Y2 spend $xxM. This opportunity captures the additional consumption of $xM.",
@@ -1641,7 +1641,7 @@
   },
   {
     "id": "83",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "Operational Resiliency PCR#1",
     "description": "Zero-dollar PCR.",
@@ -1661,7 +1661,7 @@
   },
   {
     "id": "84",
-    "account": "Other",
+    "account": "NLI",
     "client": "City of Toledo Utilities",
     "opportunity": "Finance ECC Upgrade",
     "description": "Upgrading CoT's ECC environment to either EHP8 or S/4",
@@ -1681,7 +1681,7 @@
   },
   {
     "id": "85",
-    "account": "Other",
+    "account": "NLI",
     "client": "City of Toledo Utilities",
     "opportunity": "Integration system enhancements",
     "description": "Optimize integration between SAP and CityWorks systems",
@@ -1701,7 +1701,7 @@
   },
   {
     "id": "86",
-    "account": "Other",
+    "account": "NLI",
     "client": "City of Toledo Utilities",
     "opportunity": "Utility business KPI reporting",
     "description": "Build reports in SAP ISU to help business review KPIs",
@@ -1721,7 +1721,7 @@
   },
   {
     "id": "87",
-    "account": "Other",
+    "account": "NLI",
     "client": "Loudoun County Sanitation Authority",
     "opportunity": "Loudoun - SAP S/4 ERP & CRB improvements (enh&automation)",
     "description": "Utilize process automation and Implement business process improvements after Brownfield+ migration is complete",
@@ -1741,7 +1741,7 @@
   },
   {
     "id": "88",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "DC194 - Staff Aug2026 - Q4 Work Orders",
     "description": "",
@@ -1761,7 +1761,7 @@
   },
   {
     "id": "89",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 - S/4 Customer Portal Integration",
     "description": "",
@@ -1781,7 +1781,7 @@
   },
   {
     "id": "90",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 - S/4 Brownfield Migration",
     "description": "ECC to S4 Migration.",
@@ -1801,7 +1801,7 @@
   },
   {
     "id": "91",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 - S/4 Brownfield Migration",
     "description": "ECC to S4 Migration.",
@@ -1821,7 +1821,7 @@
   },
   {
     "id": "92",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 - S/4 Brownfield Migration",
     "description": "ECC to S4 Migration.",
@@ -1841,7 +1841,7 @@
   },
   {
     "id": "93",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 - S/4 Brownfield Migration",
     "description": "ECC to S4 Migration.",
@@ -1861,7 +1861,7 @@
   },
   {
     "id": "94",
-    "account": "Other",
+    "account": "NLI",
     "client": "City of Toledo Utilities",
     "opportunity": "SAP cloud migration Renewal",
     "description": "",
@@ -1881,7 +1881,7 @@
   },
   {
     "id": "95",
-    "account": "Other",
+    "account": "NLI",
     "client": "City of Toledo Utilities",
     "opportunity": "SAP cloud migration Renewal",
     "description": "",
@@ -1901,7 +1901,7 @@
   },
   {
     "id": "96",
-    "account": "Other",
+    "account": "NLI",
     "client": "Middlesex Water Company",
     "opportunity": "Treasury Process Automation",
     "description": "",
@@ -1921,7 +1921,7 @@
   },
   {
     "id": "97",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW - Controls Rationalization",
     "description": "",
@@ -1941,7 +1941,7 @@
   },
   {
     "id": "98",
-    "account": "Other",
+    "account": "NLI",
     "client": "City of Toledo Utilities",
     "opportunity": "SAP cloud migration Renewal",
     "description": "",
@@ -1961,7 +1961,7 @@
   },
   {
     "id": "99",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 - S/4 Brownfield Migration",
     "description": "ECC to S4 Migration.",
@@ -1981,7 +1981,7 @@
   },
   {
     "id": "100",
-    "account": "Other",
+    "account": "NLI",
     "client": "American States Water Co.",
     "opportunity": "ASW - Property Tax Compliance",
     "description": "Target- Long term pursuit",
@@ -2001,7 +2001,7 @@
   },
   {
     "id": "101",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW - OS and DB Upgrade SOW",
     "description": "SOW for hours to help perform OS and DB upgrades.",
@@ -2021,7 +2021,7 @@
   },
   {
     "id": "102",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 - S/4 Brownfield Migration",
     "description": "ECC to S4 Migration.",
@@ -2041,7 +2041,7 @@
   },
   {
     "id": "103",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "American Water | SAP ECC and BOBJ Technical Upgrade",
     "description": "",
@@ -2061,7 +2061,7 @@
   },
   {
     "id": "104",
-    "account": "Other",
+    "account": "NLI",
     "client": "American Water Works Company, Inc.",
     "opportunity": "AW2030 -  Cyber Services",
     "description": "Cyber support for AW2023",
@@ -2181,7 +2181,7 @@
   },
   {
     "id": "110",
-    "account": "Other",
+    "account": "NLI",
     "client": "Mojave Water Agency",
     "opportunity": "Infrastructure Asset Management Program Advancement & CMMS Implementation",
     "description": "The Mojave Water Agency (MWA or Agency) has completed Phase 1 of its Infrastructure Asset Management Program (IAMP), establishing the foundational framework for long-term asset stewardship. Phase 1 included defining levels of service, developing a limited  asset inventory and data management framewo",
