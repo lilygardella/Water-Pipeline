@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>West Water Pipeline | CGP Business Development</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #112240;
+    --blue: #1a4a8a;
+    --blue-light: #2563b0;
+    --teal: #0d9488;
+    --teal-light: #14b8a6;
+    --gold: #d4a017;
+    --gold-light: #f5c842;
+    --slate: #64748b;
+    --slate-light: #94a3b8;
+    --white: #f8fafc;
+    --mw-color: #dc2626;
+    --top-color: #d97706;
+    --card-bg: #0f1f3d;
+    --card-border: rgba(255,255,255,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 40% at 20% 0%, rgba(13,148,136,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 100%, rgba(26,74,138,0.18) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page { position: relative; z-index: 1; }
+
+  /* ── HEADER ── */
+  header {
+    padding: 2.5rem 3rem 2rem;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .header-left h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.6rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 30%, var(--teal-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .header-left p {
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--slate-light);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .meta-pill {
+    background: rgba(13,148,136,0.12);
+    border: 1px solid rgba(13,148,136,0.25);
+    border-radius: 999px;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--teal-light);
+    letter-spacing: 0.04em;
+  }
+
+  .meta-pill span { color: #fff; font-weight: 600; }
+
+  .date-badge { font-size: 0.75rem; color: var(--slate-light); font-weight: 300; }
+
+  .add-btn {
+    background: var(--teal);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.55rem 1.2rem;
+    cursor: pointer;
+    transition: background 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .add-btn:hover { background: #0f766e; }
+
+  .sync-indicator {
+    font-size: 0.72rem;
+    color: var(--slate);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .sync-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s infinite;
+  }
+
+  .sync-dot.syncing { background: var(--gold-light); animation: none; }
+  .sync-dot.error { background: var(--mw-color); animation: none; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  /* ── SUMMARY STRIP ── */
+  .summary-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+    background: var(--card-border);
+  }
+
+  .summary-stat {
+    background: var(--navy);
+    padding: 1.4rem 1.8rem;
+    transition: background 0.2s;
+  }
+
+  .summary-stat:hover { background: var(--card-bg); }
+
+  .summary-stat .label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-light);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .summary-stat .value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .summary-stat .sub { font-size: 0.72rem; color: var(--teal-light); margin-top: 0.3rem; }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    padding: 1.2rem 3rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .toolbar-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-light);
+    font-weight: 500;
+    margin-right: 0.3rem;
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    font-size: 0.78rem;
+    color: var(--slate-light);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.18s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #fff;
+  }
+
+  .sort-select {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.78rem;
+    color: var(--white);
+    font-family: inherit;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  /* ── GRID ── */
+  .pipeline-grid {
+    padding: 2rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.25rem;
+  }
+
+  /* ── CARD ── */
+  .opp-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    animation: fadeUp 0.35s ease both;
+    position: relative;
+  }
+
+  .opp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    border-color: rgba(13,148,136,0.35);
+  }
+
+  .opp-card.must-win { border-left: 3px solid var(--mw-color); }
+  .opp-card.top-opp  { border-left: 3px solid var(--top-color); }
+
+  .card-actions {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    display: flex;
+    gap: 0.35rem;
+    opacity: 0;
+    transition: opacity 0.18s;
+    z-index: 2;
+  }
+
+  .opp-card:hover .card-actions { opacity: 1; }
+
+  .card-action-btn {
+    background: rgba(10,22,40,0.85);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    color: var(--slate-light);
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+
+  .card-action-btn:hover { border-color: var(--teal); color: var(--teal-light); }
+  .card-action-btn.del:hover { border-color: var(--mw-color); color: #fca5a5; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-header {
+    padding: 1.25rem 1.4rem 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .card-state {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.07);
+    border-radius: 6px;
+    padding: 0.28rem 0.65rem;
+    color: var(--slate-light);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .card-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: flex-end; }
+
+  .badge {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .badge-mw  { background: rgba(220,38,38,0.2);  color: #fca5a5; border: 1px solid rgba(220,38,38,0.35); }
+  .badge-top { background: rgba(217,119,6,0.2);  color: #fcd34d; border: 1px solid rgba(217,119,6,0.35); }
+  .badge-hold{ background: rgba(100,116,139,0.2); color: var(--slate-light); border: 1px solid rgba(100,116,139,0.25); }
+  .badge-jo  { background: rgba(26,74,138,0.25);  color: #93c5fd; border: 1px solid rgba(26,74,138,0.4); }
+
+  .card-body { padding: 0 1.4rem 1.2rem; flex: 1; }
+
+  .client-name {
+    font-size: 0.72rem;
+    color: var(--teal-light);
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .opp-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    color: #e2e8f0;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-desc { font-size: 0.76rem; color: var(--slate-light); line-height: 1.55; margin-bottom: 0.9rem; }
+
+  .card-meta-row { display: flex; gap: 1.2rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+
+  .card-meta-item .lbl {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  .card-meta-item .val { font-size: 0.88rem; font-weight: 600; color: #fff; margin-top: 0.1rem; }
+  .value-highlight { color: var(--gold-light) !important; }
+
+  .section-label {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    margin-top: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--card-border); }
+
+  .status-text, .nextstep-text { font-size: 0.76rem; color: #94a3b8; line-height: 1.55; white-space: pre-line; }
+
+  .card-footer {
+    padding: 0.9rem 1.4rem;
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .team-text { font-size: 0.72rem; color: var(--slate-light); }
+  .alliances-text { font-size: 0.68rem; color: var(--slate); }
+
+  .expand-btn {
+    background: none;
+    border: none;
+    color: var(--teal-light);
+    font-size: 0.72rem;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 0.2rem 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ── DETAIL PANEL ── */
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 100;
+    backdrop-filter: blur(4px);
+  }
+
+  .overlay.open { display: block; }
+
+  .detail-panel {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(580px, 100vw);
+    height: 100vh;
+    background: #0d1e38;
+    border-left: 1px solid var(--card-border);
+    z-index: 101;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    padding: 2rem 2rem 3rem;
+  }
+
+  .detail-panel.open { transform: translateX(0); }
+
+  .detail-close {
+    background: rgba(255,255,255,0.07);
+    border: none;
+    color: #fff;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .dp-state-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    background: rgba(13,148,136,0.15);
+    border: 1px solid rgba(13,148,136,0.3);
+    color: var(--teal-light);
+    border-radius: 6px;
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .dp-client { font-size: 0.75rem; color: var(--teal-light); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.4rem; }
+
+  .dp-title { font-family: 'DM Serif Display', serif; font-size: 1.5rem; line-height: 1.25; color: #e2e8f0; margin-bottom: 1.4rem; }
+
+  .dp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1.5rem; }
+
+  .dp-field .lbl { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); font-weight: 600; margin-bottom: 0.25rem; }
+  .dp-field .val { font-size: 0.9rem; color: #e2e8f0; font-weight: 500; }
+
+  .dp-section { margin-bottom: 1.4rem; }
+
+  .dp-section-title {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--teal-light);
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 0.75rem;
+  }
+
+  .dp-text { font-size: 0.82rem; color: #94a3b8; line-height: 1.65; white-space: pre-line; }
+  .dp-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+
+  .dp-edit-btn {
+    margin-top: 2rem;
+    width: 100%;
+    background: rgba(13,148,136,0.12);
+    border: 1px solid rgba(13,148,136,0.3);
+    border-radius: 8px;
+    color: var(--teal-light);
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.7rem;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+
+  .dp-edit-btn:hover { background: var(--teal); color: #fff; border-color: var(--teal); }
+
+  /* ── EDIT MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: #0d1e38;
+    border: 1px solid rgba(13,148,136,0.25);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    animation: modalIn 0.22s ease;
+  }
+
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.96) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  .modal-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: #e2e8f0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .modal-close {
+    background: rgba(255,255,255,0.07);
+    border: none;
+    color: #fff;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group.full { grid-column: 1 / -1; }
+
+  .form-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal-light);
+    font-weight: 600;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: #e2e8f0;
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 0.55rem 0.85rem;
+    transition: border-color 0.18s;
+    width: 100%;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+  }
+
+  .form-select { cursor: pointer; }
+  .form-select option { background: #0d1e38; }
+
+  .form-textarea { resize: vertical; min-height: 90px; line-height: 1.5; }
+
+  .modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--card-border);
+    padding-top: 1.2rem;
+  }
+
+  .btn-cancel {
+    background: transparent;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--slate-light);
+    font-family: inherit;
+    font-size: 0.85rem;
+    padding: 0.6rem 1.3rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-cancel:hover { border-color: var(--slate-light); color: #fff; }
+
+  .btn-save {
+    background: var(--teal);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .btn-save:hover { background: #0f766e; }
+  .btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ── COUNT BAR ── */
+  .count-bar {
+    padding: 0.7rem 3rem;
+    font-size: 0.75rem;
+    color: var(--slate-light);
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .count-bar span { color: var(--teal-light); font-weight: 600; }
+
+  /* ── TAB NAV ── */
+  .tab-nav {
+    display: flex;
+    border-bottom: 1px solid var(--card-border);
+    padding: 0 3rem;
+    background: var(--navy);
+  }
+
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--slate-light);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.85rem 1.4rem;
+    cursor: pointer;
+    transition: color 0.18s, border-color 0.18s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: -1px;
+  }
+
+  .tab-btn:hover { color: #fff; }
+  .tab-btn.active { color: var(--teal-light); border-bottom-color: var(--teal-light); }
+  .tab-btn .tab-icon { font-size: 0.9rem; }
+
+  .tab-view { display: none; }
+  .tab-view.active { display: block; }
+
+  /* ── TABLE VIEW ── */
+  .table-wrap { padding: 2rem 3rem; overflow-x: auto; }
+
+  .pipeline-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  .pipeline-table thead tr { border-bottom: 1px solid var(--teal); }
+
+  .pipeline-table th {
+    text-align: left;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--teal-light);
+    padding: 0.6rem 1rem 0.7rem;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    background: var(--navy);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  .pipeline-table th:hover { color: #fff; }
+  .pipeline-table th .sort-arrow { display: inline-block; margin-left: 0.3rem; opacity: 0.4; font-size: 0.6rem; }
+  .pipeline-table th.sorted .sort-arrow { opacity: 1; color: var(--teal-light); }
+
+  .pipeline-table tbody tr {
+    border-bottom: 1px solid var(--card-border);
+    transition: background 0.15s;
+    cursor: pointer;
+  }
+
+  .pipeline-table tbody tr:hover { background: rgba(13,148,136,0.06); }
+  .pipeline-table tbody tr.tr-mw { border-left: 3px solid var(--mw-color); }
+  .pipeline-table tbody tr.tr-top { border-left: 3px solid var(--top-color); }
+
+  .pipeline-table td { padding: 0.75rem 1rem; vertical-align: middle; color: #cbd5e1; }
+
+  .td-state {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+    padding: 0.2rem 0.55rem; border-radius: 5px; white-space: nowrap; display: inline-block;
+  }
+
+  .td-opp { color: #e2e8f0; font-weight: 500; max-width: 260px; }
+  .td-client { color: var(--slate-light); font-size: 0.75rem; max-width: 200px; }
+  .td-value { color: var(--gold-light); font-weight: 600; white-space: nowrap; }
+  .td-date { white-space: nowrap; }
+  .td-team { color: var(--slate-light); font-size: 0.74rem; max-width: 180px; }
+  .td-nextstep { color: var(--slate-light); font-size: 0.74rem; max-width: 240px; line-height: 1.45; }
+  .td-nextstep-inner { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  .td-detail-btn {
+    background: none;
+    border: 1px solid rgba(13,148,136,0.3);
+    border-radius: 5px;
+    color: var(--teal-light);
+    font-size: 0.7rem;
+    padding: 0.25rem 0.65rem;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+
+  .td-detail-btn:hover { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+  /* ── EMPTY STATE ── */
+  .empty-state { grid-column: 1/-1; text-align: center; padding: 4rem 2rem; color: var(--slate-light); font-size: 0.9rem; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #1a3a2a;
+    border: 1px solid rgba(13,148,136,0.4);
+    border-radius: 10px;
+    color: var(--teal-light);
+    font-size: 0.82rem;
+    padding: 0.8rem 1.4rem;
+    z-index: 300;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.25s;
+    pointer-events: none;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.error { background: #2a1a1a; border-color: rgba(220,38,38,0.4); color: #fca5a5; }
+
+  @media (max-width: 700px) {
+    header, .tab-nav, .toolbar, .pipeline-grid, .count-bar, .table-wrap { padding-left: 1.2rem; padding-right: 1.2rem; }
+    header { flex-direction: column; align-items: flex-start; }
+    .header-left h1 { font-size: 2rem; }
+    .pipeline-grid { grid-template-columns: 1fr; }
+    .detail-panel { width: 100vw; }
+    .form-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HEADER -->
+<header>
+  <div class="header-left">
+    <h1>West Water Pipeline</h1>
+    <p>CGP Business Development &mdash; Western Water Opportunities</p>
+  </div>
+  <div class="header-meta">
+    <div class="meta-pill">As of <span id="as-of-date">—</span></div>
+    <div class="meta-pill"><span id="total-count">—</span> Active Deals</div>
+    <div class="sync-indicator">
+      <div class="sync-dot" id="sync-dot"></div>
+      <span id="sync-label">Live</span>
+    </div>
+    <button class="add-btn" id="add-deal-btn">+ Add Deal</button>
+  </div>
+</header>
+
+<!-- SUMMARY STRIP -->
+<div class="summary-strip">
+  <div class="summary-stat">
+    <div class="label">Total Identified Value</div>
+    <div class="value" id="stat-value">—</div>
+    <div class="sub" id="stat-tbd">—</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">Must Win</div>
+    <div class="value" id="stat-mw" style="color:#fca5a5">—</div>
+    <div class="sub">Flagged MW</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">Top Opportunity</div>
+    <div class="value" id="stat-top" style="color:#fcd34d">—</div>
+    <div class="sub">Flagged TOP</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">States Covered</div>
+    <div class="value" id="stat-states">—</div>
+    <div class="sub" id="stat-states-list">—</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">Active Jupiter IDs</div>
+    <div class="value" id="stat-jupiter">—</div>
+    <div class="sub" id="stat-hold">—</div>
+  </div>
+  <div class="summary-stat">
+    <div class="label">Largest Deal</div>
+    <div class="value" id="stat-largest" style="color:var(--gold-light)">—</div>
+    <div class="sub" id="stat-largest-sub">—</div>
+  </div>
+</div>
+
+<!-- TAB NAV -->
+<nav class="tab-nav">
+  <button class="tab-btn active" data-tab="cards"><span class="tab-icon">⊞</span> Card View</button>
+  <button class="tab-btn" data-tab="table"><span class="tab-icon">≡</span> Table View</button>
+</nav>
+
+<div class="tab-view active" id="tab-cards">
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <span class="toolbar-label">Filter</span>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="mw">Must Win</button>
+  <button class="filter-btn" data-filter="top">Top Opp</button>
+  <div id="state-filters"></div>
+  <select class="sort-select" id="sort-select">
+    <option value="value">Sort: Value (High→Low)</option>
+    <option value="date">Sort: Close Date</option>
+    <option value="state">Sort: State</option>
+    <option value="mw">Sort: Priority First</option>
+  </select>
+</div>
+
+<div class="count-bar"><span id="visible-count">—</span> of <span id="total-visible">—</span> opportunities shown</div>
+<div class="pipeline-grid" id="pipeline-grid"></div>
+
+</div><!-- /tab-cards -->
+
+<!-- TABLE TAB -->
+<div class="tab-view" id="tab-table">
+  <div class="table-wrap">
+    <table class="pipeline-table" id="pipeline-table">
+      <thead>
+        <tr>
+          <th data-col="account">State <span class="sort-arrow">↕</span></th>
+          <th data-col="client">Client <span class="sort-arrow">↕</span></th>
+          <th data-col="opportunity">Opportunity <span class="sort-arrow">↕</span></th>
+          <th data-col="value">Est. Value <span class="sort-arrow">↕</span></th>
+          <th data-col="close_date">Close Date <span class="sort-arrow">↕</span></th>
+          <th data-col="must_win">Priority <span class="sort-arrow">↕</span></th>
+          <th data-col="jupiter">Jupiter ID <span class="sort-arrow">↕</span></th>
+          <th data-col="team">Team <span class="sort-arrow">↕</span></th>
+          <th data-col="next_step">Next Step <span class="sort-arrow">↕</span></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+</div>
+
+</div><!-- /page -->
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay"></div>
+
+<!-- DETAIL PANEL -->
+<div class="detail-panel" id="detail-panel">
+  <button class="detail-close" id="detail-close">✕</button>
+  <div id="detail-content"></div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <div class="modal-title">
+      <span id="modal-title-text">Edit Deal</span>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+    <form id="deal-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">State</label>
+          <select class="form-select" name="account" required>
+            <option value="AZ">AZ — Arizona</option>
+            <option value="CA">CA — California</option>
+            <option value="ID">ID — Idaho</option>
+            <option value="NM">NM — New Mexico</option>
+            <option value="OR">OR — Oregon</option>
+            <option value="UT">UT — Utah</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Priority</label>
+          <select class="form-select" name="must_win">
+            <option value="">None</option>
+            <option value="MW">Must Win (MW)</option>
+            <option value="TOP">Top Opportunity (TOP)</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Client / Agency</label>
+          <input class="form-input" name="client" required placeholder="e.g. State Water Resource Control Board (SWRCB)">
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Opportunity Name</label>
+          <input class="form-input" name="opportunity" required placeholder="e.g. WaterTap">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Est. Value</label>
+          <input class="form-input" name="value" placeholder="e.g. $20M or TBD">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Est. Close Date</label>
+          <input class="form-input" name="close_date" placeholder="e.g. Sep 2026 or TBD">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Jupiter ID</label>
+          <input class="form-input" name="jupiter" placeholder="e.g. JO-080667 or Hold">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Alliances</label>
+          <input class="form-input" name="alliances" placeholder="e.g. Salesforce, ESRI">
+        </div>
+        <div class="form-group full">
+          <label class="form-label">CGP Team</label>
+          <input class="form-input" name="team" placeholder="e.g. Stewart, Leslie, Shane">
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Project Description</label>
+          <textarea class="form-textarea" name="description" placeholder="Brief description of the project scope..."></textarea>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Current Status</label>
+          <textarea class="form-textarea" name="status" style="min-height:120px" placeholder="Use bullet points starting with - on each line..."></textarea>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Next Steps</label>
+          <textarea class="form-textarea" name="next_step" style="min-height:100px" placeholder="Use bullet points starting with - on each line..."></textarea>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" id="modal-cancel">Cancel</button>
+        <button type="submit" class="btn-save" id="modal-save">Save Deal</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+const stateColors = {AZ:'#f97316', CA:'#3b82f6', ID:'#8b5cf6', NM:'#ec4899', OR:'#22c55e', UT:'#f59e0b'};
+
+let DATA = [];
+let currentFilter = 'all';
+let currentSort = 'value';
+let tableSortCol = 'valueNum';
+let tableSortAsc = false;
+let editingId = null;
+let detailOpenId = null;
+let lastFetch = 0;
+
+// ── API ──
+async function apiFetch(url, opts = {}) {
+  setSyncState('syncing');
+  try {
+    const r = await fetch(url, { headers: {'Content-Type':'application/json'}, ...opts });
+    if (!r.ok) throw new Error(await r.text());
+    const data = await r.json();
+    setSyncState('ok');
+    return data;
+  } catch(e) {
+    setSyncState('error');
+    throw e;
+  }
+}
+
+async function loadDeals() {
+  const deals = await apiFetch('/api/deals');
+  DATA = deals.map(d => ({ ...d, valueNum: parseValueNum(d.value) }));
+  updateSummary();
+  updateStateFilters();
+  renderGrid();
+  if (document.getElementById('tab-table').classList.contains('active')) renderTable();
+  if (detailOpenId) refreshDetailPanel();
+  lastFetch = Date.now();
+}
+
+function parseValueNum(v) {
+  if (!v || v === 'TBD') return 0;
+  return parseFloat(v.replace(/[^0-9.]/g, '')) * (v.includes('M') ? 1000000 : v.includes('K') ? 1000 : 1);
+}
+
+// ── SYNC STATE ──
+function setSyncState(state) {
+  const dot = document.getElementById('sync-dot');
+  const lbl = document.getElementById('sync-label');
+  dot.className = 'sync-dot' + (state === 'ok' ? '' : ` ${state}`);
+  lbl.textContent = state === 'syncing' ? 'Syncing…' : state === 'error' ? 'Offline' : 'Live';
+}
+
+// ── SUMMARY ──
+function updateSummary() {
+  const total = DATA.reduce((s, d) => s + d.valueNum, 0);
+  const tbdCount = DATA.filter(d => d.value === 'TBD' || !d.value).length;
+  const mwCount  = DATA.filter(d => d.must_win === 'MW').length;
+  const topCount = DATA.filter(d => d.must_win === 'TOP').length;
+  const states   = [...new Set(DATA.map(d => d.account))].sort();
+  const activeJ  = DATA.filter(d => d.jupiter && d.jupiter !== 'Hold').length;
+  const holdCount= DATA.filter(d => d.jupiter === 'Hold').length;
+  const largest  = DATA.reduce((m, d) => d.valueNum > m.valueNum ? d : m, {valueNum:0});
+
+  document.getElementById('stat-value').textContent = total > 0 ? '$' + (total/1e6).toFixed(1) + 'M' : '$0';
+  document.getElementById('stat-tbd').textContent = `+ ${tbdCount} TBD opportunities`;
+  document.getElementById('stat-mw').textContent = mwCount;
+  document.getElementById('stat-top').textContent = topCount;
+  document.getElementById('stat-states').textContent = states.length;
+  document.getElementById('stat-states-list').textContent = states.join(', ');
+  document.getElementById('stat-jupiter').textContent = activeJ;
+  document.getElementById('stat-hold').textContent = `${holdCount} on Hold`;
+  document.getElementById('stat-largest').textContent = largest.value || '—';
+  document.getElementById('stat-largest-sub').textContent = largest.client ? `${largest.client.split('(')[0].trim().split(' ').slice(-1)[0]} · ${largest.account}` : '—';
+  document.getElementById('total-count').textContent = DATA.length;
+  document.getElementById('as-of-date').textContent = new Date().toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+}
+
+// ── STATE FILTERS ──
+function updateStateFilters() {
+  const states = [...new Set(DATA.map(d => d.account))].sort();
+  const container = document.getElementById('state-filters');
+  container.innerHTML = states.map(s =>
+    `<button class="filter-btn${currentFilter===s?' active':''}" data-filter="${s}">${s}</button>`
+  ).join('');
+  container.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => setFilter(btn.dataset.filter));
+  });
+}
+
+function setFilter(f) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+  renderGrid();
+}
+
+// ── SORT / FILTER ──
+function sortData(data, mode) {
+  const copy = [...data];
+  if (mode === 'value')  return copy.sort((a,b) => b.valueNum - a.valueNum);
+  if (mode === 'date')   return copy.sort((a,b) => parseDateSort(a.close_date) - parseDateSort(b.close_date));
+  if (mode === 'state')  return copy.sort((a,b) => a.account.localeCompare(b.account));
+  if (mode === 'mw')     return copy.sort((a,b) => mwRank(a.must_win) - mwRank(b.must_win));
+  return copy;
+}
+
+function parseDateSort(s) {
+  if (!s || s === 'TBD') return Infinity;
+  const d = new Date(s); return isNaN(d) ? Infinity : d;
+}
+
+function mwRank(s) { return s==='MW'?0:s==='TOP'?1:2; }
+
+function filterData(data, f) {
+  if (f === 'all') return data;
+  if (f === 'mw')  return data.filter(d => d.must_win === 'MW');
+  if (f === 'top') return data.filter(d => d.must_win === 'TOP');
+  return data.filter(d => d.account === f);
+}
+
+// ── CARD RENDERING ──
+function jBadgeHtml(j) {
+  return j === 'Hold'
+    ? `<span class="badge badge-hold">Hold</span>`
+    : `<span class="badge badge-jo">${j}</span>`;
+}
+
+function mwBadgeHtml(mw, long) {
+  return mw === 'MW'
+    ? `<span class="badge badge-mw">${long?'Must Win':'MW'}</span>`
+    : mw === 'TOP'
+    ? `<span class="badge badge-top">${long?'Top Opportunity':'TOP'}</span>`
+    : '';
+}
+
+function makeCard(d, i) {
+  const stateCol = stateColors[d.account] || '#64748b';
+  const mwClass  = d.must_win === 'MW' ? 'must-win' : d.must_win === 'TOP' ? 'top-opp' : '';
+  const desc     = d.description ? `<div class="card-desc">${esc(d.description)}</div>` : '';
+  const shortStatus = (d.status || '').trim().split('\n').filter(Boolean).slice(0,2).join('\n');
+  const alliances   = d.alliances ? `<div class="alliances-text">🔗 ${esc(d.alliances)}</div>` : '';
+
+  return `
+  <div class="opp-card ${mwClass}" data-id="${d.id}" style="animation-delay:${i*0.04}s">
+    <div class="card-actions">
+      <button class="card-action-btn" data-action="edit" data-id="${d.id}">Edit</button>
+      <button class="card-action-btn del" data-action="del" data-id="${d.id}">Delete</button>
+    </div>
+    <div class="card-header">
+      <div class="card-state" style="color:${stateCol};background:${stateCol}18;border:1px solid ${stateCol}30">${d.account}</div>
+      <div class="card-badges">${mwBadgeHtml(d.must_win, false)}${jBadgeHtml(d.jupiter)}</div>
+    </div>
+    <div class="card-body">
+      <div class="client-name">${esc(d.client)}</div>
+      <div class="opp-name">${esc(d.opportunity)}</div>
+      ${desc}
+      <div class="card-meta-row">
+        <div class="card-meta-item"><div class="lbl">Est. Value</div><div class="val value-highlight">${esc(d.value)}</div></div>
+        <div class="card-meta-item"><div class="lbl">Est. Close</div><div class="val">${esc(d.close_date)}</div></div>
+      </div>
+      ${shortStatus ? `<div class="section-label">Status</div><div class="status-text">${esc(shortStatus)}</div>` : ''}
+    </div>
+    <div class="card-footer">
+      <div>
+        <div class="team-text">👥 ${esc(d.team)}</div>
+        ${alliances}
+      </div>
+      <button class="expand-btn" data-id="${d.id}">Full Detail →</button>
+    </div>
+  </div>`;
+}
+
+function renderGrid() {
+  const sorted   = sortData(DATA, currentSort);
+  const filtered = filterData(sorted, currentFilter);
+  const grid     = document.getElementById('pipeline-grid');
+
+  grid.innerHTML = filtered.length === 0
+    ? '<div class="empty-state">No opportunities match the current filter.</div>'
+    : filtered.map((d, i) => makeCard(d, i)).join('');
+
+  document.getElementById('visible-count').textContent = filtered.length;
+  document.getElementById('total-visible').textContent = DATA.length;
+
+  grid.querySelectorAll('.expand-btn').forEach(btn =>
+    btn.addEventListener('click', e => { e.stopPropagation(); openDetail(btn.dataset.id); }));
+  grid.querySelectorAll('.opp-card').forEach(card =>
+    card.addEventListener('click', () => openDetail(card.dataset.id)));
+  grid.querySelectorAll('.card-action-btn').forEach(btn =>
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      if (btn.dataset.action === 'edit') openEditModal(btn.dataset.id);
+      if (btn.dataset.action === 'del') confirmDelete(btn.dataset.id);
+    }));
+}
+
+// ── DETAIL PANEL ──
+function openDetail(id) {
+  detailOpenId = id;
+  refreshDetailPanel();
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('detail-panel').classList.add('open');
+}
+
+function refreshDetailPanel() {
+  const d = DATA.find(x => x.id === detailOpenId);
+  if (!d) return;
+  const stateCol = stateColors[d.account] || '#64748b';
+  const alliances = d.alliances
+    ? `<div class="dp-field" style="grid-column:1/-1"><div class="lbl">Alliances</div><div class="val">${esc(d.alliances)}</div></div>`
+    : '';
+  const desc = d.description
+    ? `<div class="dp-section"><div class="dp-section-title">Project Description</div><div class="dp-text">${esc(d.description)}</div></div>`
+    : '';
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="dp-state-badge" style="background:${stateCol}18;border-color:${stateCol}40;color:${stateCol}">${d.account} &mdash; State</div>
+    <div class="dp-client">${esc(d.client)}</div>
+    <div class="dp-title">${esc(d.opportunity)}</div>
+    <div class="dp-badges">${mwBadgeHtml(d.must_win, true)}${jBadgeHtml(d.jupiter)}</div>
+    <div class="dp-grid" style="margin-top:1.2rem">
+      <div class="dp-field"><div class="lbl">Est. Value</div><div class="val" style="color:var(--gold-light)">${esc(d.value)}</div></div>
+      <div class="dp-field"><div class="lbl">Est. Close Date</div><div class="val">${esc(d.close_date)}</div></div>
+      <div class="dp-field"><div class="lbl">Jupiter ID</div><div class="val">${esc(d.jupiter)}</div></div>
+      <div class="dp-field"><div class="lbl">Gov Level</div><div class="val">State</div></div>
+      ${alliances}
+    </div>
+    ${desc}
+    <div class="dp-section"><div class="dp-section-title">Current Status</div><div class="dp-text">${esc(d.status || '—')}</div></div>
+    <div class="dp-section"><div class="dp-section-title">Next Steps</div><div class="dp-text">${esc(d.next_step || '—')}</div></div>
+    <div class="dp-section"><div class="dp-section-title">CGP Team</div><div class="dp-text">${esc(d.team)}</div></div>
+    <button class="dp-edit-btn" id="dp-edit-btn">✏️ Edit This Deal</button>
+  `;
+
+  document.getElementById('dp-edit-btn').addEventListener('click', () => {
+    closeDetail();
+    openEditModal(d.id);
+  });
+}
+
+function closeDetail() {
+  detailOpenId = null;
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('detail-panel').classList.remove('open');
+}
+
+// ── EDIT MODAL ──
+const FIELDS = ['account','must_win','client','opportunity','value','close_date','jupiter','alliances','team','description','status','next_step'];
+
+function openEditModal(id) {
+  editingId = id || null;
+  const d = id ? DATA.find(x => x.id === id) : null;
+  document.getElementById('modal-title-text').textContent = d ? 'Edit Deal' : 'New Deal';
+  const form = document.getElementById('deal-form');
+  form.reset();
+  if (d) {
+    FIELDS.forEach(f => {
+      const el = form.elements[f];
+      if (el) el.value = d[f] || '';
+    });
+  }
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  editingId = null;
+}
+
+async function saveDeal(e) {
+  e.preventDefault();
+  const btn = document.getElementById('modal-save');
+  btn.disabled = true;
+  btn.textContent = 'Saving…';
+
+  const form = document.getElementById('deal-form');
+  const body = {};
+  FIELDS.forEach(f => { body[f] = form.elements[f]?.value || ''; });
+  body.valueNum = parseValueNum(body.value);
+
+  try {
+    if (editingId) {
+      await apiFetch(`/api/deals/${editingId}`, { method: 'PUT', body: JSON.stringify(body) });
+      showToast('Deal updated successfully');
+    } else {
+      await apiFetch('/api/deals', { method: 'POST', body: JSON.stringify(body) });
+      showToast('Deal added successfully');
+    }
+    closeModal();
+    await loadDeals();
+  } catch(err) {
+    showToast('Error saving deal — please try again', true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save Deal';
+  }
+}
+
+async function confirmDelete(id) {
+  const d = DATA.find(x => x.id === id);
+  if (!d) return;
+  if (!confirm(`Delete "${d.opportunity}"?\n\nThis cannot be undone.`)) return;
+  try {
+    await apiFetch(`/api/deals/${id}`, { method: 'DELETE' });
+    showToast('Deal deleted');
+    await loadDeals();
+  } catch(err) {
+    showToast('Error deleting deal', true);
+  }
+}
+
+// ── TABLE VIEW ──
+function renderTable() {
+  const tbody = document.getElementById('table-body');
+  let rows = [...DATA];
+
+  rows.sort((a, b) => {
+    let av = a[tableSortCol] ?? '', bv = b[tableSortCol] ?? '';
+    if (tableSortCol === 'must_win') { av = mwRank(av); bv = mwRank(bv); }
+    if (typeof av === 'string') av = av.toLowerCase();
+    if (typeof bv === 'string') bv = bv.toLowerCase();
+    if (av < bv) return tableSortAsc ? -1 : 1;
+    if (av > bv) return tableSortAsc ? 1 : -1;
+    return 0;
+  });
+
+  tbody.innerHTML = rows.map(d => {
+    const stateCol = stateColors[d.account] || '#64748b';
+    const trClass  = d.must_win === 'MW' ? 'tr-mw' : d.must_win === 'TOP' ? 'tr-top' : '';
+    const nextLine = (d.next_step || '').split('\n').filter(Boolean)[0] || '—';
+    return `
+    <tr class="${trClass}" data-id="${d.id}">
+      <td><span class="td-state" style="color:${stateCol};background:${stateCol}18;border:1px solid ${stateCol}30">${d.account}</span></td>
+      <td class="td-client">${esc(d.client)}</td>
+      <td class="td-opp">${esc(d.opportunity)}</td>
+      <td class="td-value">${esc(d.value)}</td>
+      <td class="td-date">${esc(d.close_date)}</td>
+      <td>${mwBadgeHtml(d.must_win, false) || '<span style="color:var(--slate);font-size:0.72rem;">—</span>'}</td>
+      <td>${jBadgeHtml(d.jupiter)}</td>
+      <td class="td-team">${esc(d.team)}</td>
+      <td class="td-nextstep"><div class="td-nextstep-inner">${esc(nextLine)}</div></td>
+      <td><button class="td-detail-btn" data-id="${d.id}">Detail →</button></td>
+    </tr>`;
+  }).join('');
+
+  document.querySelectorAll('.pipeline-table th[data-col]').forEach(th => {
+    th.classList.remove('sorted');
+    const arrow = th.querySelector('.sort-arrow');
+    arrow.textContent = '↕';
+    const col = th.dataset.col === 'value' ? 'valueNum' : th.dataset.col;
+    if (col === tableSortCol) { th.classList.add('sorted'); arrow.textContent = tableSortAsc ? '↑' : '↓'; }
+  });
+
+  tbody.querySelectorAll('tr').forEach(tr =>
+    tr.addEventListener('click', () => openDetail(tr.dataset.id)));
+  tbody.querySelectorAll('.td-detail-btn').forEach(btn =>
+    btn.addEventListener('click', e => { e.stopPropagation(); openDetail(btn.dataset.id); }));
+}
+
+document.querySelectorAll('.pipeline-table th[data-col]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col === 'value' ? 'valueNum' : th.dataset.col;
+    if (tableSortCol === col) tableSortAsc = !tableSortAsc;
+    else { tableSortCol = col; tableSortAsc = ['account','client','opportunity','team'].includes(col); }
+    renderTable();
+  });
+});
+
+// ── TOAST ──
+let toastTimer;
+function showToast(msg, err = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (err ? ' error' : '') + ' show';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── UTIL ──
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── EVENTS ──
+document.querySelectorAll('.filter-btn').forEach(btn =>
+  btn.addEventListener('click', () => setFilter(btn.dataset.filter)));
+
+document.getElementById('sort-select').addEventListener('change', e => {
+  currentSort = e.target.value;
+  renderGrid();
+});
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    if (btn.dataset.tab === 'table') renderTable();
+  });
+});
+
+document.getElementById('detail-close').addEventListener('click', closeDetail);
+document.getElementById('overlay').addEventListener('click', closeDetail);
+
+document.getElementById('add-deal-btn').addEventListener('click', () => openEditModal(null));
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-cancel').addEventListener('click', closeModal);
+document.getElementById('deal-form').addEventListener('submit', saveDeal);
+
+document.getElementById('modal-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+});
+
+// ── AUTO-REFRESH (every 30s) ──
+setInterval(loadDeals, 30000);
+
+// ── INIT ──
+loadDeals();
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "water-pipeline",
+  "version": "1.0.0",
+  "description": "CGP West Water Pipeline tracker",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
