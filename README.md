@@ -2,29 +2,36 @@
 
 CGP Business Development — interactive pipeline dashboard for S&I SGM Water-Led Play.
 
-## Running locally
+## Live site
 
-```bash
-npm install
-node server.js
-# Open http://localhost:3000
-```
+Once GitHub Pages is enabled, the dashboard will be at:  
+`https://lilygardella.github.io/Water-Pipeline/`
 
-## Deploying to Render (free, shareable URL)
+## Enabling GitHub Pages
 
-1. Push this repo to GitHub (already done)
-2. Go to [render.com](https://render.com) → **New Web Service**
-3. Connect your GitHub repo `lilygardella/Water-Pipeline`
-4. Render auto-detects `render.yaml` — click **Deploy**
-5. Your team gets a public URL like `https://water-pipeline.onrender.com`
+1. Go to **Settings → Pages** in this repository
+2. Under **Source**, select **Deploy from a branch**
+3. Choose branch **main**, folder **/ (root)**
+4. Click **Save** — Pages will be live in ~1 minute
 
-> **Note:** The free Render tier spins down after 15 min of inactivity (first load takes ~30s to wake). Upgrade to Starter ($7/mo) to keep it always-on.
+## Daily workflow (editing deals)
 
-## Importing data
+1. Open the live site
+2. Edit deals directly in the dashboard (click any card → Edit)
+3. When done, click **⬇ Download pipeline.json** from the unsaved-changes banner
+4. Replace `data/pipeline.json` in your local clone with the downloaded file
+5. `git add data/pipeline.json && git commit -m "Update pipeline data" && git push`
 
-Click **⬆ Import Excel** in the top-right and upload the `SGM_WaterLed_Play_Pipeline_Tracker.xlsm` file.  
-Choose **Replace all** to refresh everything, or **Merge** to add new deals only.
+GitHub Pages serves the updated data on the next page load.
 
-## Data persistence
+## Importing from Excel
 
-Deal edits are saved to `data/pipeline.json`. On Render, the `/data` folder is mounted as a persistent disk so edits survive redeploys.
+Click **⬆ Import Excel** and upload `SGM_WaterLed_Play_Pipeline_Tracker.xlsm`.  
+Choose **Replace all** to refresh everything, or **Merge** to add new deals only.  
+After importing, download and commit `pipeline.json` as above.
+
+## Data file
+
+Deal data lives in `data/pipeline.json`. Edits made in the browser are held in  
+localStorage until you download and commit the file — at which point all users  
+see the update on their next page load.
